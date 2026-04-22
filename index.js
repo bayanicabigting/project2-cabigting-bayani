@@ -1015,14 +1015,16 @@ function createChoice(choice) {
     btn.textContent = choice.text;
 
     btn.onclick = () => {
-        if (isTyping) {
+		if (inputLocked) return;
+		
+		if (isTyping) {
             clearTimeout(typingTimeout);
             textDiv.innerHTML = fullText;
             isTyping = false;
             return;
         }
 
-		if (!textFullyShown) return;
+		inputLocked = true;
         
         if (choice.next === "END") {
         endGame();
@@ -1145,21 +1147,19 @@ const speakerColors = {
 
 let typingTimeout = null;
 let isTyping = false;
-let textFullyShown = false;
+let inputLocked = false;
 let fullText = "";
 
 function typeText(text, callback) {
-    textDiv.innerHTML = "";
-
-    fullText = text;
-
     if (typingTimeout) {
         clearTimeout(typingTimeout);
     }
+	
+	textDiv.innerHTML = "";
+    fullText = text;
 
     let i = 0;
     isTyping = true;
-	textFullyShown = false;
 
     function type() {
         if (i < text.length) {
@@ -1179,10 +1179,13 @@ function typeText(text, callback) {
 function renderChoices(node) {
     choicesDiv.innerHTML = "";
     node.choices.forEach(createChoice);
+	inputLocked = false;
 }
 
 function render() {
-    const node = getNode();
+    inputLocked = true;
+	
+	const node = getNode();
 
     let fullText = node.text || "";
 
