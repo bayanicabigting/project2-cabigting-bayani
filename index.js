@@ -1021,6 +1021,8 @@ function createChoice(choice) {
             isTyping = false;
             return;
         }
+
+		if (!textFullyShown) return;
         
         if (choice.next === "END") {
         endGame();
@@ -1143,6 +1145,7 @@ const speakerColors = {
 
 let typingTimeout = null;
 let isTyping = false;
+let textFullyShown = false;
 let fullText = "";
 
 function typeText(text, callback) {
@@ -1156,6 +1159,7 @@ function typeText(text, callback) {
 
     let i = 0;
     isTyping = true;
+	textFullyShown = false;
 
     function type() {
         if (i < text.length) {
@@ -1164,6 +1168,7 @@ function typeText(text, callback) {
             typingTimeout = setTimeout(type, 18);
         } else {
             isTyping = false;
+			textFullyShown = true;
             if (callback) callback();
         }
     }
