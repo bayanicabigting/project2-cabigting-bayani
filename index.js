@@ -602,7 +602,8 @@ const story = {
     boss: {
         speaker: "Oda",
         text: `...The Port Mafia's boss.`,
-        sprites: [
+        sound: `Assets/Sounds/gun.mp3`,
+		sprites: [
             { src: `Assets/Sprites/dazai_shocked.png`, pos: `center` },
             { src: `Assets/Sprites/gun.png`, pos: `right` }
         ],
