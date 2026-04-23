@@ -711,18 +711,17 @@ const story = {
             text: `I placed my trust in Akutagawa and believed that the Port Mafia won’t hurt him after he makes it out of the building. `,
             elseText: `I placed my trust in Akutagawa. `}
         ],
-        text: `It seems that my intuition was correct, as Akutagawa managed to escape the building after a lengthy fight with the Mafia’s White Reaper, a deadly assassin.`,
         choices: [{ text: "Next", next: "goodEnding1Cont" }]
     },
 
     goodEnding1Cont: {
-        text: `He reports that the Mafia boss Dazai committed suicide as they engaged in battle on the rooftop, but he was unable to bring his sister back with him.`,
+        text: `It seems that my intuition was correct, as Akutagawa managed to escape the building after a lengthy fight with the Mafia’s White Reaper, a deadly assassin. He reports that the Mafia boss Dazai committed suicide as they engaged in battle on the rooftop, but he was unable to bring his sister back with him.`,
         choices: [{ text: "Next", next: "goodEnding1Cont2" }]
     },
 
     goodEnding1Cont2: {
         text: `Akutagawa hasn’t given up hope, however. He continues to work with us at the Armed Detective Agency, training his ability and skills so that one day he might find his sister again.`,
-        choices: [{ text: "Next", next: "GoodEndingFinal" }]
+        choices: [{ text: "Next", next: "goodEndingFinal" }]
     },
 
     goodEndingFinal: {
