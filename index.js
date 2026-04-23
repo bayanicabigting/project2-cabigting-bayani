@@ -1,3 +1,26 @@
+function preloadImages() {
+	const imagePaths = [];
+
+    Object.values(story).forEach(node => {
+        if (node.bg) {
+            imagePaths.push(node.bg);
+        }
+
+        if (node.sprites) {
+            node.sprites.forEach(sprite => {
+                imagePaths.push(sprite.src);
+            });
+        }
+
+    });
+
+    imagePaths.forEach(path => {
+        const img = new Image();
+        img.src = path;
+    });
+
+}
+
 function playSound(src) {
     const audio = new Audio(src);
     audio.volume = 0.7;
@@ -1262,7 +1285,9 @@ function resetGame() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const startBtn = document.getElementById("start-btn");
+    preloadImages();
+	
+	const startBtn = document.getElementById("start-btn");
     const startScreen = document.getElementById("start-screen");
     const vnBox = document.getElementById("vn-box");
     const choicesDiv = document.getElementById("choices");
